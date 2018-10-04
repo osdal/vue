@@ -23,7 +23,22 @@
 		<button v-on:click="riseCounterMulti(5, 'Изменено на 5', $event)">Увеличить на 5</button>
 		<button v-on:click="riseCounterMulti(10, 'Изменено на 10', $event)">Увеличить на 10</button>
 
+<!-- Модификаторы мобытий -->
+	
 	</div>
+
+	<div id="mod-events">
+		<hr>
+		<p>Модификаторы событий</p>
+		<p>Отмена перехода по ссылке</p>
+			<a href="http://google.com" target="_blank" v-on:click.prevent="">Google</a>
+		<p>Отмена срабатывания мышки</p>
+		<h2 v-on:mousemove="handleMouseMove">X: {{ x }} / Y: {{ y }}<span v-on:mousemove.stop="">не изменять</span></h2>
+
+	</div>
+
+	
+	
 
 	<script src="JS/vue.js"></script>
 	<script>
@@ -61,6 +76,21 @@
 					}
 				}
 			}
+		})
+
+		let modEvents = new Vue ({
+			el: '#mod-events',
+			data: {
+				x: 0,
+				y: 0
+			},
+			methods: {
+				handleMouseMove: function(event) {
+					this.x = event.clientX
+					this.y = event.clientY
+				}
+			}
+
 		})
 
 	</script>
