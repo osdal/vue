@@ -35,6 +35,11 @@
 		<p>Отмена срабатывания мышки</p>
 		<h2 v-on:mousemove="handleMouseMove">X: {{ x }} / Y: {{ y }}<span v-on:mousemove.stop="">не изменять</span></h2>
 
+		<hr>
+		<p>Вывод alert по нажатию кнопки enter. На остальные кнопки не срабатывает</p>
+
+		<input type="text" v-on:keyup.enter="alertValue">
+
 	</div>
 
 	
@@ -88,6 +93,9 @@
 				handleMouseMove: function(event) {
 					this.x = event.clientX
 					this.y = event.clientY
+				},
+				alertValue: function(event) {
+					alert(event.target.value)
 				}
 			}
 
